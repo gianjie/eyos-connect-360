@@ -22,7 +22,7 @@ export default function Home() {
           facingMode: 'environment'
         }
       })
-      const videoTracks = stream.getVideoTracks()
+      // const videoTracks = stream.getVideoTracks()
       // const track = videoTracks[0]
 
       document.querySelector('video').srcObject = stream

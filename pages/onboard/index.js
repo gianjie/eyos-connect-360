@@ -8,7 +8,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to
           {' '}
-          <a href="https://nextjs.org"><br/>ONBOARDING</a>
+          <a href="/dashboard"><br/>TO DASHBOARD</a>
         </h1>
       </main>
     </div>

@@ -14,7 +14,7 @@ const style = {
   },
   SubmitContainer: {
     position:'absolute', bottom: 40, left: 0, right: 0,
-    display:'flex', justifyContent: 'center'
+    display:'flex', justifyContent: 'center', zIndex: 5
   }
 }
 export default function Home() {
@@ -82,7 +82,7 @@ export default function Home() {
       console.error(error)
     }
   }
- 
+  console.log(window.visualViewport)
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -92,14 +92,27 @@ export default function Home() {
         </div>
         <button style={style.button}/>
         {takePhoto && 
-          <div style={{zIndex: 2, position:"position", backgroundColor:'black', top:0, right:0, bottom: 0, left:0}}>
-            <Image 
-              src={takePhoto} 
-              width={window.outerWidth}
-              height={window.outerHeight}
-              objectFit={'contain'}
-              alt="eyos photo taken"
-            />
+          <div style={{
+            zIndex: 2, position:"fixed", backgroundColor:'black', 
+            top:0, left: 0,
+            height: window?.visualViewport.height, 
+            width: window?.visualViewport.width,
+            display:'flex', justifyContent:"center", alignItems:"center",
+          }}>
+            <span style={{
+              height: window?.visualViewport.height, 
+              width: window?.visualViewport.width,
+            }}>
+              <Image 
+                src={takePhoto} 
+                height={window?.visualViewport.height}
+                width={window?.visualViewport.width}
+                layout={'fixed'}
+                objectFit={'contain'}
+                alt="eyos photo taken"
+              />
+            </span>
+          
             
             <div style={style.XContainer} onClick={reTakePhoto}>
               <span style={{color:'white', fontSize: 25}}>X</span>

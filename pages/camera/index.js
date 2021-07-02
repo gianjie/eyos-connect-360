@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from '../../styles/Home.module.css';
 import Image from 'next/image'
+import { useRouter } from 'next/router';
 // import Link from 'next/link'
 
 const style = {
@@ -9,14 +10,15 @@ const style = {
     border: 'none', position:"fixed", bottom: 50, backgroundColor:"white"
   },
   XContainer: {
-    position:'absolute', top: 20, left: 25, height: 50, width: 50
+    position:'absolute', top: 20, left: 25, padding: 10
   },
   SubmitContainer: {
-    position:'absolute', bottom: 0, left: 0, right: 0,
-    display:'flex', justifyContent: 'center',
+    position:'absolute', bottom: 40, left: 0, right: 0,
+    display:'flex', justifyContent: 'center'
   }
 }
 export default function Home() {
+  const Router = useRouter();
 
   const [takePhoto, setTakePhoto] = useState(null);
 
@@ -25,6 +27,23 @@ export default function Home() {
   }, []);
 
   const reTakePhoto = () => setTakePhoto(null);
+  const submitPhoto = () => {
+    vidOff();
+    Router.back()
+  };
+
+
+  const vidOff = () => {
+    const video = document.querySelector('video');
+    // A video's MediaStream object is available through its srcObject attribute
+    const mediaStream = video.srcObject;
+    // Through the MediaStream, you can get the MediaStreamTracks with getTracks():
+    const tracks = mediaStream.getTracks();
+    // Tracks are returned as an array, so if you know you only have one, you can stop it with: 
+    tracks[0].stop();
+    // Or stop all like so:
+    tracks.forEach(track => track.stop())
+  }
 
   const captureVideo = (video) => {
     var canvas = document.createElement("canvas");
@@ -67,29 +86,27 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <video autoPlay muted playsInline/>
+        <video id="vid" autoPlay muted playsInline/>
         <div style={{zIndex:1}}>
           <span style={{height: 50, width: 50, borderRadius: 25, backgroundColor:"red"}}></span>
         </div>
         <button style={style.button}/>
         {takePhoto && 
           <div style={{zIndex: 2, position:"fixed", backgroundColor:'black'}}>
+            <Image 
+              src={takePhoto} 
+              width={window.outerWidth}
+              height={window.outerHeight}
+              objectFit={'contain'}
+              alt="eyos photo taken"
+            />
+            
             <div style={style.XContainer} onClick={reTakePhoto}>
               <span style={{color:'white', fontSize: 25}}>X</span>
             </div>
-           
-            <Image 
-              src={takePhoto} 
-              style={{
-                width: window?.outerWidth,
-                height: window?.outerHeight,
-                objectFit:'contain'
-              }} 
-              alt="eyos photo taken"
-            />
 
-            <div style={style.SubmitContainer} onClick={reTakePhoto}>
-              <span style={{color:'white', fontSize: 15, border: '1px solid white', padding: '2.5px 10px'}}>Submit</span>
+            <div style={style.SubmitContainer} onClick={submitPhoto}>
+              <span style={{color:'white', fontSize: 15, border: '1px solid white', padding: '5px 20px', borderRadius: 20}}>Submit</span>
             </div>
           </div>
         }

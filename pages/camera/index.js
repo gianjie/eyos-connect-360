@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from '../../styles/Home.module.css';
+import Image from 'next/image'
 // import Link from 'next/link'
 
 const style = {
@@ -76,14 +77,17 @@ export default function Home() {
             <div style={style.XContainer} onClick={reTakePhoto}>
               <span style={{color:'white', fontSize: 25}}>X</span>
             </div>
-            <img 
+           
+            <Image 
+              src={takePhoto} 
               style={{
                 width: window?.outerWidth,
                 height: window?.outerHeight,
                 objectFit:'contain'
               }} 
-              src={takePhoto}
+              alt="eyos photo taken"
             />
+
             <div style={style.SubmitContainer} onClick={reTakePhoto}>
               <span style={{color:'white', fontSize: 15, border: '1px solid white', padding: '2.5px 10px'}}>Submit</span>
             </div>

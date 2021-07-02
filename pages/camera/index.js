@@ -80,6 +80,7 @@ export default function Home() {
     } catch (error) {
       alert(`${error}`)
       console.error(error)
+      Router.back()
     }
   }
 

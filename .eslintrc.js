@@ -7,7 +7,6 @@ module.exports = {
         "eslint:recommended",
         "plugin:react/recommended",
         "next",
-        "next/core-web-vitals",
     ],
     "parserOptions": {
         "ecmaFeatures": {

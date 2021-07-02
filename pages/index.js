@@ -9,9 +9,8 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to
           {' '}
-          <Link href="/auth">
-            <a><br/>connect 360</a>
-          </Link>
+          <a href="/auth"><br/>connect 360</a>
+          
         </h1>
       </main>
     </div>

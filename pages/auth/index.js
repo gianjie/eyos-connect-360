@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from '../../styles/Home.module.css';
-import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -9,9 +8,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to
           {' '}
-          <Link href="/onboard">
-            <a><br/>TO ONBOARDING</a>
-          </Link>
+          <a href="/onboard"><br/>TO ONBOARDING</a>
         </h1>
       </main>
     </div>

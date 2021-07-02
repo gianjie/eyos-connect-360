@@ -26,7 +26,8 @@ export default function Home() {
       // const track = videoTracks[0]
 
       document.querySelector('video').srcObject = stream
-      document.querySelector('video').style.width = window.outerWidth + 'px';
+      // document.querySelector('video').style.width = window.outerWidth + 'px';
+      document.querySelector('video').style.position = 'fixed';
       document.querySelector('video').style.height = window.outerHeight + 'px';
       document.querySelector('video').setAttribute('autoplay', '');
       document.querySelector('video').setAttribute('muted', '');
@@ -34,7 +35,10 @@ export default function Home() {
       document.querySelector('#get-access').setAttribute('hidden', true)
       //The video stream is stopped by track.stop() after 3 second of playback.
 
-    
+      document.querySelector('video').addEventListener('click', function() {
+        console.log('hello world!')
+      });
+      
     } catch (error) {
       alert(`${error}`)
       console.error(error)

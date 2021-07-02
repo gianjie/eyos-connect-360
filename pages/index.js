@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from '../styles/Home.module.css';
-import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -9,8 +8,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to
           {' '}
-          <a href="/auth"><br/>connect 360</a>
-          
+          <a href="/auth"><br/>connect 360</a>          
         </h1>
       </main>
     </div>

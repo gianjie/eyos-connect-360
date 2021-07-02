@@ -1,10 +1,8 @@
 import React from 'react';
 import styles from '../../styles/Home.module.css';
+import Link from 'next/link'
 
 export default function Home() {
-  const upload = (file) => {
-    console.log(file)
-  };
 
  const onClick = async () => {
   try {
@@ -32,7 +30,9 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to
           {' '}
-          <a href="https://nextjs.org"><br/>DASHBOARD</a>
+          <Link href="/">
+            <a><br/>DASHBOARD</a>
+          </Link>
         </h1>
         <button id="get-access" onClick={onClick}>Get access to camera</button>
         <video autoPlay></video>

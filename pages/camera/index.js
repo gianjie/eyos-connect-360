@@ -82,7 +82,7 @@ export default function Home() {
       console.error(error)
     }
   }
-  console.log(window.visualViewport)
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>

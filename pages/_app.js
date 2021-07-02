@@ -1,7 +1,9 @@
+import React from 'react';
 import Head from 'next/head'
 import '../styles/globals.css'
+import ProtectedRoutes from "../lib/ProtectedRoute";
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps, router }) {
   return (
     <>
       <Head>
@@ -13,7 +15,7 @@ export default function MyApp({ Component, pageProps }) {
         />
         <meta name="description" content="Description" />
         <meta name="keywords" content="Keywords" />
-        <title>Next.js PWA Example</title>
+        <title>eyos connect 360</title>
 
         <link rel="manifest" href="/manifest.json" />
         <link
@@ -31,7 +33,12 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
-      <Component {...pageProps} />
+      <ProtectedRoutes router={router}>
+        <Component {...pageProps} />
+      </ProtectedRoutes>
     </>
   )
 }
+
+
+

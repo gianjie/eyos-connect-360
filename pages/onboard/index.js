@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to
           {' '}
-          <a href="https://nextjs.org">Index</a>
+          <a href="https://nextjs.org"><br/>ONBOARDING</a>
         </h1>
       </main>
     </div>

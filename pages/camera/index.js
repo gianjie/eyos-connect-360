@@ -80,13 +80,14 @@ export default function Home() {
     } catch (error) {
       alert(`${error}`)
       console.error(error)
+      Router.back()
     }
   }
-
+  
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <video id="vid" autoPlay muted/>
+        <video id="vid" autoPlay muted playsInline/>
         <div style={{zIndex:1}}>
           <span style={{height: 50, width: 50, borderRadius: 25, backgroundColor:"red"}}></span>
         </div>
